@@ -76,6 +76,7 @@ func (c *cpuCollector) Update(ch chan<- prometheus.Metric) (err error) {
 		ch <- c.cpu.mustNewConstMetric(float64(time[C.CP_USER])/hz, lcpu, "user")
 		ch <- c.cpu.mustNewConstMetric(float64(time[C.CP_NICE])/hz, lcpu, "nice")
 		ch <- c.cpu.mustNewConstMetric(float64(time[C.CP_SYS])/hz, lcpu, "system")
+		ch <- c.cpu.mustNewConstMetric(float64(time[C.CP_SPIN])/hz, lcpu, "spin")
 		ch <- c.cpu.mustNewConstMetric(float64(time[C.CP_INTR])/hz, lcpu, "interrupt")
 		ch <- c.cpu.mustNewConstMetric(float64(time[C.CP_IDLE])/hz, lcpu, "idle")
 	}
